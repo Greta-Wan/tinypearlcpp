@@ -1,20 +1,65 @@
-// Chapter202203.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include <thread>
+#include <mutex>
+#include "stringbad.h"
 
+void callme1(StringBad&);
+
+using std::endl;
+using std::cout;
+
+void CallMe(StringBad);
 int main()
 {
-    std::cout << "Hello World!\n";
+    {
+        StringBad headline1("Headline1");
+        CallMe(headline1);
+
+        /*cout << "Starting an inner block:\n";
+        StringBad headline1("Headline1");
+        StringBad headline2("Headline2");
+
+        StringBad sports("Sports");
+
+        cout << "headline1: " << headline1 << endl;
+        cout << "headline2: " << headline2 << endl;
+        cout << "sports: " << sports << endl;
+
+        callme1(headline1);
+
+        cout << "headline1: " << headline1 << endl;
+        callme2(headline2);
+        cout << "headline2: " << headline2 << endl;
+
+        cout << "Initialize one object to another:\n";
+
+        StringBad sailor = sports;
+        cout << "sailor: " << sailor << endl;
+
+        cout << "Assign one object to another:\n";
+
+        StringBad knot;
+        knot = headline1;
+
+        cout << "knot: " << knot << endl;
+        cout << "Exiting the block.\n";*/
+
+    }
+
+    cout << "End of main() \n";
+
+    return 0;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+void callme1(StringBad & rsb) 
+{
+    cout << "String passed by reference:\n";
+    cout << rsb << endl;
+}
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+void CallMe(StringBad sb)
+{
+    cout << "String passed by value:\n";
+    cout << sb;
+}
+
